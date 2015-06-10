@@ -70,25 +70,31 @@ class Notify
   end
 
   # Send status updates to WorkingOn
-  def self.wo(message, print_info_message = false)
-    begin
-      require_relative "plugins/workingon.rb"
+  # def self.wo(message, print_info_message = false)
+  #   begin
+  #     require_relative "plugins/workingon.rb"
 
-      plugin = Plugin::WorkingOn.new
-      plugin.send(message)
+  #     plugin = Plugin::WorkingOn.new
+  #     plugin.send(message)
 
-      if print_info_message
-        info(message)
-      end
-    rescue Exception => e
-      error("Error notifying WO - #{e.message}", self)
-    end
-  end
+  #     if print_info_message
+  #       info(message)
+  #     end
+  #   rescue Exception => e
+  #     error("Error notifying WO - #{e.message}", self)
+  #   end
+  # end
 
   # pretty-print a spacer
   def self.spacer
     inline("\u2011 =============", :magenta)
   end
+
+  # register new plugins
+  # def self.register_plugin(info)
+  #   plugin = Plugin.new(info)
+  #   plugin.validate
+  # end
 
   private
     # Collate colour and style, build message string in format of 

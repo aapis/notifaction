@@ -1,6 +1,3 @@
-require "time"
-require "rbconfig"
-
 class Utils
   def self.formatted_time(time = nil)
     if time.nil?
