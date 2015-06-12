@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = 'notifaction'
-  s.version       = '0.0.2'
+  s.version       = '0.0.3'
   s.date          = '2015-06-10'
   s.summary       = "Notification Satisfaction"
   s.description   = "Include terminal and OS notifications in your project"

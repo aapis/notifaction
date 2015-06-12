@@ -1,7 +1,7 @@
 module Plugin
   class WorkingOn
     def send(message)
-      Net::HTTP.post_form(URI(sprintf(api_endpoint, api_key)), :task => CGI.escapeHTML(message))
+      ::Net::HTTP.post_form(URI(sprintf(api_endpoint, api_key)), :task => CGI.escapeHTML(message))
     end
 
     def api_endpoint
@@ -9,7 +9,7 @@ module Plugin
     end
 
     def api_key
-      'key'
+      Notify.instance_variable_get('@WorkingOn_key')
     end
   end
 end

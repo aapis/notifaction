@@ -1,4 +1,4 @@
-class Plugin
+module Plugin
   def validate
 
   end
