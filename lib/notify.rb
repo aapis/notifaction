@@ -1,5 +1,3 @@
-$:.unshift File.dirname(__FILE__)
-
 class Notify
   # Display a notification bubble
   def self.bubble(message, title)
@@ -70,31 +68,39 @@ class Notify
   end
 
   # Send status updates to WorkingOn
-  # def self.wo(message, print_info_message = false)
-  #   begin
-  #     require_relative "plugins/workingon.rb"
+  def self.workingon(message, print_info_message = false)
+    begin
+      plugin = Plugin::WorkingOn.new
+      plugin.send(message)
 
-  #     plugin = Plugin::WorkingOn.new
-  #     plugin.send(message)
-
-  #     if print_info_message
-  #       info(message)
-  #     end
-  #   rescue Exception => e
-  #     error("Error notifying WO - #{e.message}", self)
-  #   end
-  # end
+      if print_info_message
+        info(message)
+      end
+    rescue Exception => e
+      error("Error notifying WO - #{e.message}")
+    end
+  end
 
   # pretty-print a spacer
   def self.spacer
     inline("\u2011 =============", :magenta)
   end
 
+  def self.configure
+    yield self if block_given?
+  end
+
   # register new plugins
-  # def self.register_plugin(info)
-  #   plugin = Plugin.new(info)
-  #   plugin.validate
-  # end
+  def self.plugins=(plugin_config_arr)
+    plugin_config_arr.each do |hash|
+      hash.each_pair do |plugin, key|
+        # include the requested plugin
+        require_relative "plugins/#{plugin.downcase}.rb"
+
+        instance_variable_set("@#{plugin}_key".to_sym, key)
+      end
+    end
+  end
 
   private
     # Collate colour and style, build message string in format of 
@@ -109,7 +115,7 @@ class Notify
 
         $?.exitstatus == 0
       rescue SystemExit, Interrupt
-        error("Interrupt caught, exiting", self)
+        error("Interrupt caught, exiting")
       end
     end
 
@@ -120,7 +126,7 @@ class Notify
 
         $?.exitstatus == 0
       rescue SystemExit, Interrupt
-        error("Interrupt caught, exiting", self)
+        error("Interrupt caught, exiting")
       end
     end
 
@@ -131,7 +137,7 @@ class Notify
 
         $?.exitstatus == 0
       rescue SystemExit, Interrupt
-        error("Interrupt caught, exiting", self)
+        error("Interrupt caught, exiting")
       end
     end
 
@@ -141,7 +147,7 @@ class Notify
 
         $?.exitstatus == 0
       rescue SystemExit, Interrupt
-        error("Interrupt caught, exiting", self)
+        error("Interrupt caught, exiting")
       end
     end
 end
