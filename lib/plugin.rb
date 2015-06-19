@@ -1,5 +1,5 @@
 module Plugin
-  def validate
-
+  def self.num_lines(file)
+    File.foreach(file).inject(0) {|c, line| c+1}
   end
 end
