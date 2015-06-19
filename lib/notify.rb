@@ -109,7 +109,7 @@ class Notify
       puts Style.format(message, colour, style)
     end
 
-    def osx_notification(message, title)
+    def self.osx_notification(message, title)
       begin
         @response = `osascript -e 'display notification "#{message}" with title "#{title}"'`
 
@@ -120,7 +120,7 @@ class Notify
     end
 
     # OSX system modal popup
-    def osx_modal(message, title, icon = :caution)
+    def self.osx_modal(message, title, icon = :caution)
       begin
         @response = `osascript -e 'tell app "System Events" to display dialog "#{message}" buttons {"OK"} default button 1 with title "#{title}" with icon #{icon}'`
 
@@ -131,7 +131,7 @@ class Notify
     end
 
     # Linux system notification
-    def notifysend(message, title)
+    def self.notifysend(message, title)
       begin
         @response = `notify-send "#{title}" "#{message}"`
 
@@ -141,7 +141,7 @@ class Notify
       end
     end
 
-    def zenity(message, title)
+    def self.zenity(message, title)
       begin
         @response = `echo "message:#{message}" | zenity --notification --listen`
 
