@@ -71,7 +71,7 @@ class Notify
   def self.workingon(message, print_info_message = false)
     begin
       plugin = Plugin::WorkingOn.new
-      plugin.send(message)
+      plugin.fire(message)
 
       if print_info_message
         info(message)

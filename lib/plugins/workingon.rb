@@ -1,7 +1,7 @@
 module Plugin
   class WorkingOn
-    def send(message)
-      log = File.new('./wo-digest.log')
+    def fire(message)
+      log = File.new('/tmp/wo-digest.log', 'a+')
 
       open(log, 'a') do |file|
         file.write("#{message}\n")
