@@ -36,7 +36,7 @@ class Notify
     inline("\u2716 #{message} - #{Utils.formatted_time}", :red)
     inline("\u2716 Exiting...", :red)
 
-    exit
+    exit(1)
   end
 
   # Prints a pre-formatted warning message to the console
