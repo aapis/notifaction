@@ -5,6 +5,9 @@ Include terminal and OS notifications in your project.
 ## Usage
 
 ```ruby
+gem install notifaction
+
+# ...
 require 'notifaction'
 
 # Print an angry red terminal message
