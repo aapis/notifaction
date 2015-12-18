@@ -104,52 +104,53 @@ module Notifaction
     end
 
     private
-      # Collate colour and style, build message string in format of 
-      # "\e[#{style};#{colour}m#{text}\e[0m"
-      def self.inline(message, colour = nil, style = nil)
-        puts Style.format(message, colour, style)
+    
+    # Collate colour and style, build message string in format of 
+    # "\e[#{style};#{colour}m#{text}\e[0m"
+    def self.inline(message, colour = nil, style = nil)
+      puts Terminal.format(message, colour, style)
+    end
+
+    def self.osx_notification(message, title)
+      begin
+        @response = `osascript -e 'display notification "#{message}" with title "#{title}"'`
+
+        $?.exitstatus == 0
+      rescue SystemExit, Interrupt
+        error("Interrupt caught, exiting")
       end
+    end
 
-      def self.osx_notification(message, title)
-        begin
-          @response = `osascript -e 'display notification "#{message}" with title "#{title}"'`
+    # OSX system modal popup
+    def self.osx_modal(message, title, icon = :caution)
+      begin
+        @response = `osascript -e 'tell app "System Events" to display dialog "#{message}" buttons {"OK"} default button 1 with title "#{title}" with icon #{icon}'`
 
-          $?.exitstatus == 0
-        rescue SystemExit, Interrupt
-          error("Interrupt caught, exiting")
-        end
+        $?.exitstatus == 0
+      rescue SystemExit, Interrupt
+        error("Interrupt caught, exiting")
       end
+    end
 
-      # OSX system modal popup
-      def self.osx_modal(message, title, icon = :caution)
-        begin
-          @response = `osascript -e 'tell app "System Events" to display dialog "#{message}" buttons {"OK"} default button 1 with title "#{title}" with icon #{icon}'`
+    # Linux system notification
+    def self.notifysend(message, title)
+      begin
+        @response = `notify-send "#{title}" "#{message}"`
 
-          $?.exitstatus == 0
-        rescue SystemExit, Interrupt
-          error("Interrupt caught, exiting")
-        end
+        $?.exitstatus == 0
+      rescue SystemExit, Interrupt
+        error("Interrupt caught, exiting")
       end
+    end
 
-      # Linux system notification
-      def self.notifysend(message, title)
-        begin
-          @response = `notify-send "#{title}" "#{message}"`
+    def self.zenity(message, title)
+      begin
+        @response = `echo "message:#{message}" | zenity --notification --listen`
 
-          $?.exitstatus == 0
-        rescue SystemExit, Interrupt
-          error("Interrupt caught, exiting")
-        end
+        $?.exitstatus == 0
+      rescue SystemExit, Interrupt
+        error("Interrupt caught, exiting")
       end
-
-      def self.zenity(message, title)
-        begin
-          @response = `echo "message:#{message}" | zenity --notification --listen`
-
-          $?.exitstatus == 0
-        rescue SystemExit, Interrupt
-          error("Interrupt caught, exiting")
-        end
-      end
+    end
   end
 end
