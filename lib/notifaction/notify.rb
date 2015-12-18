@@ -31,12 +31,15 @@ class Notify
   end
 
   # Prints a pre-formatted error message to the console
-  def self.error(message)
-    message = message.split("\n").join("\n\u2716 ")
-    inline("\u2716 #{message} - #{Utils.formatted_time}", :red)
-    inline("\u2716 Exiting...", :red)
+  def self.error(message, config = [])
+    # message = message.split("\n").join("\n\u2716 ")
+    # inline("\u2716 #{message} - #{Utils.formatted_time}", :red)
+    # inline("\u2716 Exiting...", :red)
 
-    exit(1)
+    # exit(1)
+    handler = Notifaction::Type::Terminal.new
+    handler.error(message, config)
+    handler.quit
   end
 
   # Prints a pre-formatted warning message to the console

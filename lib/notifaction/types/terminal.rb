@@ -2,15 +2,11 @@ require 'notifaction/style'
 
 module Notifaction
   module Type
-    def self.error(message)
-
-    end
     class Terminal < Type::Base
-
       #
       # @since 0.2.8
       def error(message, config)
-        inline(message, config, :yellow)
+        inline(message, config, :red)
       end
 
       #
@@ -61,7 +57,7 @@ module Notifaction
 
       #
       # @since 0.2.8
-      def inline(message, config = {}, colour = nil, style = nil)
+      def inline(message, config = [], colour = nil, style = nil)
         # formatting options
         message += " - #{Utils.formatted_time}" if config[:show_time]
         message = "#{config[:symbol]} #{message}" if config[:fancy]
