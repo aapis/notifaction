@@ -14,4 +14,3 @@ require 'notifaction/utils'
 # end
 
 $config = Notifaction::Cfg.new
-$config.route

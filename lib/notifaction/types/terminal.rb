@@ -70,11 +70,11 @@ module Notifaction
           message += " - #{Utils.formatted_time}"
         else
           # update message content based on configuration variables
-          message += " - #{Utils.formatted_time}" if config[:show_time]
-          message = "#{config[:symbol]} #{message}" if config[:symbol] || config[:fancy]
+          message += " - #{Utils.formatted_time}" if config[:show_time] || $config.conf["show_time"]
+          message = "#{config[:symbol]} #{message}" if config[:symbol] || config[:fancy] || $config.conf["fancy"] == true
         end
 
-        puts Style.format(message, colour, style) unless config[:print] == false
+        puts Style.format(message, colour, style) unless config[:print] == false || $config.conf["print"] == false
 
         fire_hooks({ method: __method__, message: message, config: config })
 

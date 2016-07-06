@@ -27,7 +27,7 @@ class Notify
   def self.error(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.error(message, config)
-    handler.quit unless config[:auto_quit] == false
+    handler.quit unless config[:auto_quit] == false || $config.conf["auto_quit"] == false
   end
 
   # Prints a pre-formatted warning message to the console
