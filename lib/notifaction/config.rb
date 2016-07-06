@@ -2,7 +2,6 @@ require 'yaml'
 
 module Notifaction
   class Cfg
-
     attr_accessor :hooks, :conf
 
     def initialize
