@@ -1,4 +1,5 @@
 class Notify
+
   # Display a notification bubble
   def self.bubble(message, title)
     if Utils.os == :macosx
