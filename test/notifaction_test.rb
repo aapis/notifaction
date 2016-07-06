@@ -34,4 +34,8 @@ class NotifactionTest < Minitest::Test
     assert Notify.spit("A test message", { print: false })
   end
 
+  def test_load_hooks
+    refute Notifaction::Hooks.load_all().empty?, "You need to create and populate your ~/.notifaction.yml config file - see ..."
+  end
+
 end
