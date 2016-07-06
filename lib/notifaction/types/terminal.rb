@@ -1,4 +1,4 @@
-require 'notifaction/style'
+require "notifaction/style"
 
 module Notifaction
   module Type
