@@ -67,16 +67,7 @@ class Notify
 
   # Send status updates to WorkingOn
   def self.workingon(message, print_info_message = false)
-    begin
-      plugin = Plugin::WorkingOn.new
-      plugin.fire(message)
-
-      if print_info_message
-        info(message)
-      end
-    rescue Exception => e
-      error("Error notifying WO - #{e.message}")
-    end
+    deprecation_notice('0.3.0')
   end
 
   # pretty-print a spacer
