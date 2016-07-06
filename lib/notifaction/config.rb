@@ -8,8 +8,8 @@ module Notifaction
     def initialize
       conf = YAML::load(File.open(Dir.home + '/.notifaction.yml'))
 
-      @hooks = conf["hooks"] if conf["hooks"]
-      @conf = conf["config"] if conf["config"]
+      @hooks = conf["hooks"] || []
+      @conf = conf["config"] || {}
 
       nil
     end

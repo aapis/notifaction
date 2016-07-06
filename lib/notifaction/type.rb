@@ -22,6 +22,8 @@ module Notifaction
       def fire_hooks(payload)
         hooks = $config.hooks
 
+        return if hooks.nil?
+
         hooks.each do |uri|
           uri = URI.parse(uri)
 
