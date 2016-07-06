@@ -52,7 +52,7 @@ class NotifactionTest < Minitest::Test
     base = ::Notifaction::Type::Base.new
 
     10.times.map do |idx|
-      assert base.fire_hooks({ method: __method__ })
+      assert base.fire_hooks({ method: __method__ }), "Do you have any hooks configured in ~/.notifaction.yml?"
     end
   end
 end

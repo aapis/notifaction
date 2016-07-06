@@ -46,19 +46,6 @@ module Notifaction
 
         th.status == false
       end
-
-      def fire_hooks_nts(payload)
-        hooks = @user_conf.hooks
-
-        return if hooks.nil?
-
-        hooks.each do |uri|
-          uri = URI.parse(uri)
-
-          response = Net::HTTP.post_form(uri, payload)
-          response.code.to_i < 300
-        end
-      end
     end
   end
 end
