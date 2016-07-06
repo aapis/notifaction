@@ -47,4 +47,12 @@ class NotifactionTest < Minitest::Test
     user_conf[:print] = false
     assert Notify.spit("A test message", user_conf)
   end
+
+  def test_concurrency
+    base = ::Notifaction::Type::Base.new
+
+    10.times.map do |idx|
+      assert base.fire_hooks({ method: __method__ })
+    end
+  end
 end
