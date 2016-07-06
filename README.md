@@ -14,9 +14,9 @@ require 'notifaction'
 # Other methods:
 # - success (green)
 # - info (blue)
-# - sinfo (light blue)
+# - note (light blue)
 # - warning (yellow)
-# - spit (white)
+# - spit (no colour/white)
 begin
   call_method
 rescue => e
@@ -27,11 +27,15 @@ end
 if install_successful
   Notify.bubble("You can now proceed to use our software...", "Install Successful")
 end
-
-# Plugins extend the base notification functionality, sending messages to
-# online services
-# This example updates your status on https://www.workingon.co/
-if task.complete
-  Notify.wo("Task complete: #{task}")
-end
 ```
+
+Plugins extend the base notification functionality, sending messages to online services.  This example will show you how to send log information to a 3rd party service.
+
+```ruby
+# ~/.notifaction.yml
+
+hooks:
+    - "https://api.yourwebsite.com/messages/receive?token=1am4t0k3n"
+```
+
+That's it.  You will start receiving POST requests at the URL(s) listed in the `hooks` section of the configuration file.
