@@ -9,5 +9,3 @@ require "notifaction/notify"
 require "notifaction/config"
 require "notifaction/version"
 require "notifaction/utils"
-
-$config = Notifaction::Cfg.new
