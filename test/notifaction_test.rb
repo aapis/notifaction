@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class NotifactionTest < Minitest::Test
-
   def setup
     $config.conf["testmode"] = true
     $config.conf["auto_quit"] = false
@@ -38,5 +37,4 @@ class NotifactionTest < Minitest::Test
   def test_spit
     assert Notify.spit("A test message")
   end
-
 end

@@ -26,7 +26,7 @@ class Notify
   def self.error(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.error(message, config)
-    handler.quit unless auto_quit_enabled(config)
+    handler.quit unless self.auto_quit_enabled(config)
   end
 
   # Prints a pre-formatted warning message to the console
@@ -66,7 +66,7 @@ class Notify
 
   # Send status updates to WorkingOn
   def self.workingon(message, print_info_message = false)
-    deprecation_notice("0.3.0")
+    self.deprecation_notice("0.3.0")
   end
 
   # pretty-print a spacer
@@ -76,7 +76,7 @@ class Notify
   end
 
   def self.configure
-    deprecation_notice("0.3.0")
+    self.deprecation_notice("0.3.0")
 
     yield self if block_given?
   end
@@ -91,7 +91,7 @@ class Notify
 
   # register new plugins
   def self.plugins=(plugin_config_arr)
-    deprecation_notice("0.3.0")
+    self.deprecation_notice("0.3.0")
   end
 
   private
@@ -104,7 +104,7 @@ class Notify
 
   #
   # @since 0.3.0
-  def auto_quit_enabled(config)
+  def self.auto_quit_enabled(config)
     config[:auto_quit] == false || $config.conf["auto_quit"] == false
   end
 end

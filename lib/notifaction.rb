@@ -10,7 +10,4 @@ require "notifaction/config"
 require "notifaction/version"
 require "notifaction/utils"
 
-# module Notifaction
-# end
-
 $config = Notifaction::Cfg.new
