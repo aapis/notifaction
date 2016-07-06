@@ -4,6 +4,14 @@ require "uri"
 module Notifaction
   module Type
     class Base
+      attr_accessor :user_conf
+
+      #
+      # @since 0.3.0.1
+      def initialize
+        @user_conf = Notifaction::Cfg.new
+      end
+
       #
       # @since 0.2.8
       def deprecation_notice(version)
@@ -19,7 +27,7 @@ module Notifaction
       #
       # @since 0.3.0
       def fire_hooks(payload)
-        hooks = $config.hooks
+        hooks = @user_conf.hooks
 
         return if hooks.nil?
 

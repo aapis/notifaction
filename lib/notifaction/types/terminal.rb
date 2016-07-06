@@ -82,15 +82,15 @@ module Notifaction
       end
 
       def show_symbol(config)
-        config[:symbol] || config[:fancy] || $config.conf["fancy"] == true
+        config[:symbol] || config[:fancy] || @user_conf.conf["fancy"] == true
       end
 
       def show_time(config)
-        config[:show_time] || $config.conf["show_time"]
+        config[:show_time] || @user_conf.conf["show_time"]
       end
 
       def show_message(config)
-        config[:print] == false || $config.conf["print"] == false
+        config[:print] == false || @user_conf.conf["print"] == false
       end
     end
   end
