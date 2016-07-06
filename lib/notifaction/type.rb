@@ -20,7 +20,7 @@ module Notifaction
       #
       # @since 0.3.0
       def fire_hooks(payload)
-        hooks = Hooks::load_all()
+        hooks = $config.hooks
 
         hooks.each do |uri|
           uri = URI.parse(uri)

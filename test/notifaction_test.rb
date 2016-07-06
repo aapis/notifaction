@@ -35,7 +35,11 @@ class NotifactionTest < Minitest::Test
   end
 
   def test_load_hooks
-    refute Notifaction::Hooks.load_all().empty?, "You need to create and populate your ~/.notifaction.yml config file - see ..."
+    refute $config.hooks.nil?, "You need to create and populate your ~/.notifaction.yml config file - see ..."
+  end
+
+  def test_load_config
+    refute $config.conf.nil?, "You need to create and populate your ~/.notifaction.yml config file - see ..."
   end
 
 end
