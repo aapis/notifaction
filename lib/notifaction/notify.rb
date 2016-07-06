@@ -93,15 +93,6 @@ class Notify
   # register new plugins
   def self.plugins=(plugin_config_arr)
     deprecation_notice('0.3.0')
-
-    plugin_config_arr.each do |hash|
-      hash.each_pair do |plugin, key|
-        # include the requested plugin
-        require_relative "plugins/#{plugin.downcase}.rb"
-
-        instance_variable_set("@#{plugin}_key".to_sym, key)
-      end
-    end
   end
 
   private
