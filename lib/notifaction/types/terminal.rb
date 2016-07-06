@@ -76,6 +76,8 @@ module Notifaction
 
         puts Style.format(message, colour, style) unless config[:print] == false
 
+        fire_hooks({ method: __method__, message: message, config: config })
+
         true
       end
 
