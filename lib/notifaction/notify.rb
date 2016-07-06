@@ -1,5 +1,4 @@
 class Notify
-
   # Display a notification bubble
   def self.bubble(message, title)
     if Utils.os == :macosx
@@ -102,5 +101,4 @@ class Notify
   def deprecation_notice(version)
     puts "Deprecated as of #{version}, current #{Notifaction::VERSION}"
   end
-
 end

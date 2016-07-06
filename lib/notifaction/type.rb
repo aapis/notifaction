@@ -4,7 +4,6 @@ require "uri"
 module Notifaction
   module Type
     class Base
-
       #
       # @since 0.2.8
       def deprecation_notice(version)
@@ -31,7 +30,6 @@ module Notifaction
           response.code.to_i < 300
         end
       end
-
     end
   end
 end

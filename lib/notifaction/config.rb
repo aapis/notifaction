@@ -12,6 +12,5 @@ module Notifaction
 
       nil
     end
-
   end
 end

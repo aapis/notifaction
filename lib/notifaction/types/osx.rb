@@ -1,7 +1,6 @@
 module Notifaction
   module Type
     class OSX < Type::Base
-
       def bubble(message, title)
         @response = `osascript -e 'display notification "#{message}" with title "#{title}"'`
         $?.exitstatus == 0
@@ -15,7 +14,6 @@ module Notifaction
 
         fire_hooks(method: __method__, message: message, title: title)
       end
-
     end
   end
 end

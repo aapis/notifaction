@@ -92,7 +92,6 @@ module Notifaction
       def show_message(config)
         config[:print] == false || $config.conf["print"] == false
       end
-
     end
   end
 end

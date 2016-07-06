@@ -1,6 +1,5 @@
 module Notifaction
   module Style
-
     @map = {
       colour: {
         red: 31,
@@ -31,6 +30,5 @@ module Notifaction
 
       "\e[#{t};#{c}m#{message}\e[0m"
     end
-
   end
 end
