@@ -51,8 +51,11 @@ class NotifactionTest < Minitest::Test
   def test_concurrency
     base = ::Notifaction::Type::Base.new
 
-    10.times.map do |idx|
-      assert base.fire_hooks({ method: __method__ }), "Do you have any hooks configured in ~/.notifaction.yml?"
+    Array.new(10) do
+      assert(
+        base.fire_hooks(method: __method__),
+        "Do you have any hooks configured in ~/.notifaction.yml?"
+      )
     end
   end
 end
