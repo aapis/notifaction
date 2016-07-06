@@ -1,6 +1,5 @@
 module Notifaction
   class Utils
-
     def self.formatted_time(time = nil)
       if time.nil?
         time = Time.now
@@ -25,6 +24,5 @@ module Notifaction
         puts "unknown os: #{host_os.inspect}"
       end
     end
-
   end
 end

@@ -34,7 +34,7 @@ module Notifaction
       #
       # @since 0.2.8
       def sinfo(message, config)
-        deprecation_notice('0.2.8')
+        deprecation_notice("0.2.8")
 
         note(message, config, :cyan)
       end
