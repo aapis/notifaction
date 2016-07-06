@@ -94,7 +94,7 @@ class Notify
     self.deprecation_notice("0.3.0")
   end
 
-  private
+  private_class_method
 
   #
   # @since 0.2.8
