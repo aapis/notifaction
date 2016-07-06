@@ -2,7 +2,7 @@ require "yaml"
 
 module Notifaction
   class Cfg
-    attr_accessor :hooks, :conf
+    attr_reader :hooks, :conf
 
     def initialize
       conf = YAML::load(File.open(Dir.home + '/.notifaction.yml'))
