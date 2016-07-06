@@ -1,4 +1,4 @@
-require 'notifaction/style'
+require "notifaction/style"
 
 module Notifaction
   module Type
@@ -34,7 +34,7 @@ module Notifaction
       #
       # @since 0.2.8
       def sinfo(message, config)
-        deprecation_notice('0.2.8')
+        deprecation_notice("0.2.8")
 
         note(message, config, :cyan)
       end
@@ -70,15 +70,28 @@ module Notifaction
           message += " - #{Utils.formatted_time}"
         else
           # update message content based on configuration variables
-          message += " - #{Utils.formatted_time}" if config[:show_time]
-          message = "#{config[:symbol]} #{message}" if config[:symbol] || config[:fancy]
+          message += " - #{Utils.formatted_time}" if show_time(config)
+          message = "#{config[:symbol]} #{message}" if show_symbol(config)
         end
 
-        puts Style.format(message, colour, style) unless config[:print] == false
+        puts Style.format(message, colour, style) unless show_message(config)
+
+        fire_hooks(method: __method__, message: message, config: config)
 
         true
       end
 
+      def show_symbol(config)
+        config[:symbol] || config[:fancy] || $config.conf["fancy"] == true
+      end
+
+      def show_time(config)
+        config[:show_time] || $config.conf["show_time"]
+      end
+
+      def show_message(config)
+        config[:print] == false || $config.conf["print"] == false
+      end
     end
   end
 end

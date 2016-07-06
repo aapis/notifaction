@@ -1,0 +1,7 @@
+plugin_hooks:
+    - "https://api.workingon.co/hooks/incoming?token=derp"
+    - "https://api.test.com/hooks/incoming?token=derp2"
+
+config:
+    show_time: false
+    fancy: true
