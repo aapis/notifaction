@@ -6,32 +6,45 @@ class NotifactionTest < Minitest::Test
   end
 
   def test_success
-    assert Notify.success("A test message")
+    user_conf = {}
+    user_conf[:print] = false
+    assert Notify.success("A test message", user_conf)
   end
 
   def test_error
     user_conf = {}
     user_conf[:auto_quit] = false
+    user_conf[:print] = false
     refute Notify.error("A test message", user_conf)
   end
 
   def test_warning
-    assert Notify.warning("A test message")
+    user_conf = {}
+    user_conf[:print] = false
+    assert Notify.warning("A test message", user_conf)
   end
 
   def test_spacer
-    assert Notify.spacer
+    user_conf = {}
+    user_conf[:print] = false
+    assert Notify.spacer(user_conf)
   end
 
   def test_info
-    assert Notify.info("A test message")
+    user_conf = {}
+    user_conf[:print] = false
+    assert Notify.info("A test message", user_conf)
   end
 
   def test_note
-    assert Notify.note("A test message")
+    user_conf = {}
+    user_conf[:print] = false
+    assert Notify.note("A test message", user_conf)
   end
 
   def test_spit
-    assert Notify.spit("A test message")
+    user_conf = {}
+    user_conf[:print] = false
+    assert Notify.spit("A test message", user_conf)
   end
 end
