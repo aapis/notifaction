@@ -1,11 +1,6 @@
 require "test_helper"
 
 class NotifactionTest < Minitest::Test
-  def setup
-    $config.conf["testmode"] = true
-    $config.conf["auto_quit"] = false
-  end
-
   def test_that_it_has_a_version_number
     refute_nil ::Notifaction::VERSION
   end
@@ -15,7 +10,9 @@ class NotifactionTest < Minitest::Test
   end
 
   def test_error
-    refute Notify.error("A test message")
+    user_conf = {}
+    user_conf[:auto_quit] = false
+    refute Notify.error("A test message", user_conf)
   end
 
   def test_warning

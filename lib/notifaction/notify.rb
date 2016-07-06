@@ -26,7 +26,7 @@ class Notify
   def self.error(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.error(message, config)
-    handler.quit unless self.auto_quit_enabled(config)
+    handler.quit unless self.auto_quit_enabled(config, handler.user_conf)
   end
 
   # Prints a pre-formatted warning message to the console
@@ -104,7 +104,7 @@ class Notify
 
   #
   # @since 0.3.0
-  def self.auto_quit_enabled(config)
-    config[:auto_quit] == false || $config.conf["auto_quit"] == false
+  def self.auto_quit_enabled(config, user_conf)
+    config[:auto_quit] == false || user_conf.conf["auto_quit"] == false
   end
 end
