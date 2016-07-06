@@ -86,6 +86,8 @@ class Notify
   end
 
   def self.configure
+    deprecation_notice('0.3.0')
+
     yield self if block_given?
   end
 
@@ -99,6 +101,8 @@ class Notify
 
   # register new plugins
   def self.plugins=(plugin_config_arr)
+    deprecation_notice('0.3.0')
+
     plugin_config_arr.each do |hash|
       hash.each_pair do |plugin, key|
         # include the requested plugin
@@ -107,6 +111,14 @@ class Notify
         instance_variable_set("@#{plugin}_key".to_sym, key)
       end
     end
+  end
+
+  private
+
+  #
+  # @since 0.2.8
+  def deprecation_notice(version)
+    puts "Deprecated as of #{version}, current #{Notifaction::VERSION}"
   end
 
 end
