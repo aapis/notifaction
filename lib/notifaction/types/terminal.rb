@@ -81,14 +81,20 @@ module Notifaction
         true
       end
 
+      #
+      # @since 0.4.0
       def show_symbol(config)
         config[:symbol] || config[:fancy] || @user_conf.conf["fancy"] == true
       end
 
+      #
+      # @since 0.4.0
       def show_time(config)
         config[:show_time] || @user_conf.conf["show_time"]
       end
 
+      #
+      # @since 0.4.0
       def show_message(config)
         config[:print] == false || @user_conf.conf["print"] == false
       end

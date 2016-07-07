@@ -1,5 +1,6 @@
 class Notify
   # Display a notification bubble
+  # @since 0.1.0
   def self.bubble(message, title)
     if Utils.os == :macosx
       handler = Notifaction::Type::OSX.new
@@ -11,6 +12,8 @@ class Notify
     handler.quit
   end
 
+  # Display a modal popup with a close button
+  # @since 0.1.0
   def self.modal(message, title)
     if Utils.os == :macosx
       handler = Notifaction::Type::OSX.new
@@ -23,6 +26,7 @@ class Notify
   end
 
   # Prints a pre-formatted error message to the console
+  # @since 0.1.0
   def self.error(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.error(message, config)
@@ -30,66 +34,89 @@ class Notify
   end
 
   # Prints a pre-formatted warning message to the console
+  # @since 0.1.0
   def self.warning(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.warning(message, config)
   end
 
   # Prints a pre-formatted informational message to the console
+  # @since 0.1.0
   def self.info(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.info(message, config)
   end
 
   # Prints a pre-formatted secondary informational message to the console
+  # @since 0.1.0
   def self.sinfo(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.note(message, config)
   end
 
+  # Prints a pre-formatted secondary informational message to the console
+  # @since 0.2.0
   def self.note(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.note(message, config)
   end
 
   # Prints a pre-formatted success message to the console
+  # @since 0.1.0
   def self.success(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.success(message, config)
   end
 
   # Prints a pre-formatted unstyled message to the console
+  # @since 0.1.0
   def self.spit(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.spit(message, config)
   end
 
   # Send status updates to WorkingOn
+  # @since 0.1.0
+  # @deprecated 0.4.0
   def self.workingon(message, print_info_message = false)
     self.deprecation_notice("0.3.0")
   end
 
   # pretty-print a spacer
+  # @since 0.1.0
   def self.spacer(config = {})
     handler = Notifaction::Type::Terminal.new
     handler.spacer(config)
   end
 
+  # Set configuration options
+  # @since 0.1.0
+  # @deprecated 0.3.0
   def self.configure
     self.deprecation_notice("0.3.0")
 
     yield self if block_given?
   end
 
+  # Configuration option: set whether output should be printed or not
+  # @since 0.1.0
+  # @deprecated 0.3.0
   def self.print_output
+    self.deprecation_notice("0.3.0")
     true
   end
 
+  # Configuration option: set whether timestamps should be printed
+  # @since 0.1.0
+  # @deprecated 0.3.0
   def self.print_timestamps
+    self.deprecation_notice("0.3.0")
     true
   end
 
-  # register new plugins
+  # Register new plugins
+  # @since 0.1.0
+  # @deprecated 0.3.0
   def self.plugins=(plugin_config_arr)
     self.deprecation_notice("0.3.0")
   end
