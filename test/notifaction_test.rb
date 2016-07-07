@@ -62,6 +62,9 @@ class NotifactionTest < Minitest::Test
   def test_deprecation_notices
     user_conf = {}
     user_conf[:print] = false
-    assert_equal Notify.deprecation_notice(Notifaction::VERSION, user_conf), Notifaction::Type::Base::QUIT_SOFT
+    assert_equal(
+      Notify.deprecation_notice(Notifaction::VERSION, user_conf),
+      Notifaction::Type::Base::QUIT_SOFT
+    )
   end
 end

@@ -50,15 +50,6 @@ class Notify
   end
 
   # Prints a pre-formatted secondary informational message to the console
-  # @since 0.1.0
-  def self.sinfo(message, config = {})
-    handler = Notifaction::Type::Terminal.new
-    handler.note(message, config)
-
-    self.deprecation_notice("0.1.0")
-  end
-
-  # Prints a pre-formatted secondary informational message to the console
   # @since 0.2.0
   def self.note(message, config = {})
     handler = Notifaction::Type::Terminal.new
