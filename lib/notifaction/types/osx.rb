@@ -7,7 +7,11 @@ module Notifaction
         @response = `osascript -e 'display notification "#{message}" with title "#{title}"'`
         $?.exitstatus == 0
 
-        fire_hooks(method: __method__, message: message, title: title)
+        if fire_hooks(method: __method__, message: message, title: title)
+          quit_ok
+        else
+          quit_soft
+        end
       end
 
       #
@@ -16,7 +20,11 @@ module Notifaction
         @response = `osascript -e 'tell app "System Events" to display dialog "#{message}" buttons {"OK"} default button 1 with title "#{title}" with icon #{icon}'`
         $?.exitstatus == 0
 
-        fire_hooks(method: __method__, message: message, title: title)
+        if fire_hooks(method: __method__, message: message, title: title)
+          quit_ok
+        else
+          quit_soft
+        end
       end
     end
   end

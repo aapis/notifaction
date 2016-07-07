@@ -76,9 +76,11 @@ module Notifaction
 
         puts Style.format(message, colour, style) unless show_message(config)
 
-        fire_hooks(method: __method__, message: message, config: config)
-
-        true
+        if fire_hooks(method: __method__, message: message, config: config)
+          ok
+        else
+          soft_quit
+        end
       end
 
       #

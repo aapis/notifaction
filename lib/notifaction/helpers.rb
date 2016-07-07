@@ -7,7 +7,7 @@ module Notifaction
       config[:print] = false
 
       handler.spit "Deprecated as of #{version}, current #{Notifaction::VERSION}", config
-      handler.soft_quit
+      handler.quit_soft
     end
 
     #

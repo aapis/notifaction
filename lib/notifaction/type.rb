@@ -13,7 +13,7 @@ module Notifaction
       QUIT = 1
       # Exit code to indicate that the program exited with a non-zero exit code,
       # but not one that resulted in a force quit
-      SOFT_QUIT = 2
+      QUIT_SOFT = 2
 
       #
       # @since 0.3.0.1
@@ -29,8 +29,8 @@ module Notifaction
 
       #
       # @since 0.4.1
-      def soft_quit
-        SOFT_QUIT
+      def quit_soft
+        QUIT_SOFT
       end
 
       #

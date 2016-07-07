@@ -40,7 +40,6 @@ class Notify
   def self.warning(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.warning(message, config)
-    handler.ok
   end
 
   # Prints a pre-formatted informational message to the console
@@ -48,7 +47,6 @@ class Notify
   def self.info(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.info(message, config)
-    handler.ok
   end
 
   # Prints a pre-formatted secondary informational message to the console
@@ -65,7 +63,6 @@ class Notify
   def self.note(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.note(message, config)
-    handler.ok
   end
 
   # Prints a pre-formatted success message to the console
@@ -73,7 +70,6 @@ class Notify
   def self.success(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.success(message, config)
-    handler.ok
   end
 
   # Prints a pre-formatted unstyled message to the console
@@ -81,7 +77,6 @@ class Notify
   def self.spit(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.spit(message, config)
-    handler.ok
   end
 
   # Send status updates to WorkingOn
@@ -96,7 +91,6 @@ class Notify
   def self.spacer(config = {})
     handler = Notifaction::Type::Terminal.new
     handler.spacer(config)
-    handler.ok
   end
 
   # Set configuration options
