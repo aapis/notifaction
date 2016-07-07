@@ -79,45 +79,10 @@ class Notify
     handler.spit(message, config)
   end
 
-  # Send status updates to WorkingOn
-  # @since 0.1.0
-  # @deprecated 0.4.0
-  def self.workingon(message, print_info_message = false)
-    self.deprecation_notice("0.3.0")
-  end
-
   # pretty-print a spacer
   # @since 0.1.0
   def self.spacer(config = {})
     handler = Notifaction::Type::Terminal.new
     handler.spacer(config)
-  end
-
-  # Set configuration options
-  # @since 0.1.0
-  # @deprecated 0.3.0
-  def self.configure
-    self.deprecation_notice("0.3.0")
-  end
-
-  # Configuration option: set whether output should be printed or not
-  # @since 0.1.0
-  # @deprecated 0.3.0
-  def self.print_output
-    self.deprecation_notice("0.3.0")
-  end
-
-  # Configuration option: set whether timestamps should be printed
-  # @since 0.1.0
-  # @deprecated 0.3.0
-  def self.print_timestamps
-    self.deprecation_notice("0.3.0")
-  end
-
-  # Register new plugins
-  # @since 0.1.0
-  # @deprecated 0.3.0
-  def self.plugins=(plugin_config_arr)
-    self.deprecation_notice("0.3.0")
   end
 end
