@@ -58,4 +58,10 @@ class NotifactionTest < Minitest::Test
       )
     end
   end
+
+  def test_deprecation_notices
+    user_conf = {}
+    user_conf[:print] = false
+    assert_equal Notify.sinfo("A test message", user_conf), Notifaction::Type::Base::SOFT_QUIT
+  end
 end

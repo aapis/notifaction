@@ -6,6 +6,13 @@ module Notifaction
     class Base
       attr_reader :user_conf
 
+      # Exit code to indicate a force quit (exit) call, meaning the program
+      # quit with an error
+      QUIT = 1
+      # Exit code to indicate that the program exited with a non-zero exit code,
+      # but not one that resulted in a force quit
+      SOFT_QUIT = 2
+
       #
       # @since 0.3.0.1
       def initialize
@@ -14,14 +21,14 @@ module Notifaction
 
       #
       # @since 0.2.8
-      def deprecation_notice(version)
-        puts "Deprecated as of #{version}, current #{Notifaction::VERSION}"
+      def quit
+        exit(QUIT)
       end
 
       #
-      # @since 0.2.8
-      def quit
-        exit
+      # @since 0.4.1
+      def soft_quit
+        SOFT_QUIT
       end
 
       #

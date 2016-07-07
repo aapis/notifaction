@@ -1,4 +1,6 @@
 class Notify
+  extend Notifaction::Helpers
+
   # Display a notification bubble
   # @since 0.1.0
   def self.bubble(message, title)
@@ -30,7 +32,7 @@ class Notify
   def self.error(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.error(message, config)
-    handler.quit unless self.auto_quit_enabled(config, handler.user_conf)
+    handler.quit unless self.auto_quit_enabled?(config, handler.user_conf)
   end
 
   # Prints a pre-formatted warning message to the console
@@ -52,6 +54,8 @@ class Notify
   def self.sinfo(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.note(message, config)
+
+    self.deprecation_notice("0.1.0")
   end
 
   # Prints a pre-formatted secondary informational message to the console
@@ -119,19 +123,5 @@ class Notify
   # @deprecated 0.3.0
   def self.plugins=(plugin_config_arr)
     self.deprecation_notice("0.3.0")
-  end
-
-  private_class_method
-
-  #
-  # @since 0.2.8
-  def deprecation_notice(version)
-    puts "Deprecated as of #{version}, current #{Notifaction::VERSION}"
-  end
-
-  #
-  # @since 0.3.0
-  def self.auto_quit_enabled(config, user_conf)
-    config[:auto_quit] == false || user_conf.conf["auto_quit"] == false
   end
 end

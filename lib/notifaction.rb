@@ -1,6 +1,7 @@
 require "time"
 require "rbconfig"
 
+require "notifaction/helpers"
 require "notifaction/type"
 require "notifaction/types/linux"
 require "notifaction/types/osx"
