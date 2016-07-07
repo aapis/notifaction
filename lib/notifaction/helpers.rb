@@ -4,7 +4,10 @@ module Notifaction
     # @since 0.4.1
     def deprecation_notice(version, config = {})
       handler = Notifaction::Type::Terminal.new
-      handler.warning "Deprecated as of #{version}, current #{Notifaction::VERSION}", config
+      handler.warning(
+        "Deprecated as of #{version}, current #{Notifaction::VERSION}",
+        config
+      )
       handler.quit_soft
     end
 
