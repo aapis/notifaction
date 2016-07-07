@@ -1,3 +1,4 @@
+require "notifaction/style"
 require "net/http"
 require "uri"
 
@@ -19,6 +20,7 @@ module Notifaction
       # @since 0.3.0.1
       def initialize
         @user_conf = Notifaction::Cfg.new
+        @style = Notifaction::Style.new
       end
 
       #

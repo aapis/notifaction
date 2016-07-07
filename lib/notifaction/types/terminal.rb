@@ -1,5 +1,3 @@
-require "notifaction/style"
-
 module Notifaction
   module Type
     class Terminal < Type::Base
@@ -74,7 +72,7 @@ module Notifaction
           message = "#{config[:symbol]} #{message}" if show_symbol(config)
         end
 
-        puts Style.format(message, colour, style) unless show_message(config)
+        puts @style.format(message, colour, style) unless show_message(config)
 
         if fire_hooks(method: __method__, message: message, config: config)
           ok
