@@ -1,5 +1,3 @@
-require "notifaction/style"
-
 module Notifaction
   module Type
     class Terminal < Type::Base
@@ -74,21 +72,29 @@ module Notifaction
           message = "#{config[:symbol]} #{message}" if show_symbol(config)
         end
 
-        puts Style.format(message, colour, style) unless show_message(config)
+        puts @style.format(message, colour, style) unless show_message(config)
 
-        fire_hooks(method: __method__, message: message, config: config)
-
-        true
+        if fire_hooks(method: __method__, message: message, config: config)
+          ok
+        else
+          soft_quit
+        end
       end
 
+      #
+      # @since 0.4.0
       def show_symbol(config)
         config[:symbol] || config[:fancy] || @user_conf.conf["fancy"] == true
       end
 
+      #
+      # @since 0.4.0
       def show_time(config)
         config[:show_time] || @user_conf.conf["show_time"]
       end
 
+      #
+      # @since 0.4.0
       def show_message(config)
         config[:print] == false || @user_conf.conf["print"] == false
       end

@@ -1,3 +1,4 @@
+require "notifaction/style"
 require "net/http"
 require "uri"
 
@@ -6,22 +7,44 @@ module Notifaction
     class Base
       attr_reader :user_conf
 
+      # Exit code to indicate everything is ok!
+      OK = 0
+      # Exit code to indicate a force quit (exit) call, meaning the program
+      # quit with an error
+      QUIT = 1
+      # Exit code to indicate that the program exited with a non-zero exit code,
+      # but not one that resulted in a force quit
+      QUIT_SOFT = 2
+
       #
       # @since 0.3.0.1
       def initialize
         @user_conf = Notifaction::Cfg.new
-      end
-
-      #
-      # @since 0.2.8
-      def deprecation_notice(version)
-        puts "Deprecated as of #{version}, current #{Notifaction::VERSION}"
+        @style = Notifaction::Style.new
       end
 
       #
       # @since 0.2.8
       def quit
-        exit
+        exit(QUIT)
+      end
+
+      #
+      # @since 0.4.1
+      def quit_soft
+        QUIT_SOFT
+      end
+
+      #
+      # @since 0.4.1
+      def ok
+        OK
+      end
+
+      #
+      # @since 0.4.1
+      def quit_ok
+        exit(OK)
       end
 
       #
