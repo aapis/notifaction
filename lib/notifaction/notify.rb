@@ -11,7 +11,7 @@ class Notify
     end
 
     handler.bubble(message, title)
-    handler.quit
+    handler.quit_ok
   end
 
   # Display a modal popup with a close button
@@ -24,7 +24,7 @@ class Notify
     end
 
     handler.modal(message, title)
-    handler.quit
+    handler.quit_ok
   end
 
   # Prints a pre-formatted error message to the console
@@ -40,6 +40,7 @@ class Notify
   def self.warning(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.warning(message, config)
+    handler.ok
   end
 
   # Prints a pre-formatted informational message to the console
@@ -47,6 +48,7 @@ class Notify
   def self.info(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.info(message, config)
+    handler.ok
   end
 
   # Prints a pre-formatted secondary informational message to the console
@@ -63,6 +65,7 @@ class Notify
   def self.note(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.note(message, config)
+    handler.ok
   end
 
   # Prints a pre-formatted success message to the console
@@ -70,6 +73,7 @@ class Notify
   def self.success(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.success(message, config)
+    handler.ok
   end
 
   # Prints a pre-formatted unstyled message to the console
@@ -77,6 +81,7 @@ class Notify
   def self.spit(message, config = {})
     handler = Notifaction::Type::Terminal.new
     handler.spit(message, config)
+    handler.ok
   end
 
   # Send status updates to WorkingOn
@@ -91,6 +96,7 @@ class Notify
   def self.spacer(config = {})
     handler = Notifaction::Type::Terminal.new
     handler.spacer(config)
+    handler.ok
   end
 
   # Set configuration options
@@ -98,8 +104,6 @@ class Notify
   # @deprecated 0.3.0
   def self.configure
     self.deprecation_notice("0.3.0")
-
-    yield self if block_given?
   end
 
   # Configuration option: set whether output should be printed or not
@@ -107,7 +111,6 @@ class Notify
   # @deprecated 0.3.0
   def self.print_output
     self.deprecation_notice("0.3.0")
-    true
   end
 
   # Configuration option: set whether timestamps should be printed
@@ -115,7 +118,6 @@ class Notify
   # @deprecated 0.3.0
   def self.print_timestamps
     self.deprecation_notice("0.3.0")
-    true
   end
 
   # Register new plugins

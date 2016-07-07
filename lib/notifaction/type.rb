@@ -6,6 +6,8 @@ module Notifaction
     class Base
       attr_reader :user_conf
 
+      # Exit code to indicate everything is ok!
+      OK = 0
       # Exit code to indicate a force quit (exit) call, meaning the program
       # quit with an error
       QUIT = 1
@@ -29,6 +31,18 @@ module Notifaction
       # @since 0.4.1
       def soft_quit
         SOFT_QUIT
+      end
+
+      #
+      # @since 0.4.1
+      def ok
+        OK
+      end
+
+      #
+      # @since 0.4.1
+      def quit_ok
+        exit(OK)
       end
 
       #
