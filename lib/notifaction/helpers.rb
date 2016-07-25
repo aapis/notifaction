@@ -14,7 +14,7 @@ module Notifaction
     # Should method exit with Type::QUIT?  Mainly used in tests
     # @since 0.4.1
     def auto_quit_enabled?(config, user_conf)
-      config[:auto_quit] == false || user_conf.conf["auto_quit"] == false
+      config[:auto_quit] == false || user_conf.config("auto_quit") == false
     end
   end
 end
