@@ -7,7 +7,8 @@ module Notifaction
     #
     # @since 0.4.0
     def initialize
-      conf = YAML.load(File.open(Dir.home + "/.notifaction.yml"))
+      local_conf = Dir.home + "/.notifaction.yml"
+      conf = YAML.load(File.open(local_conf)) if File.exists? local_conf
 
       @hooks = conf["hooks"] || []
       @conf = conf["config"] || {}
