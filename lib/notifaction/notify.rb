@@ -4,7 +4,7 @@ class Notify
   # Display a notification bubble
   # @since 0.1.0
   def self.bubble(message, title)
-    if Utils.os == :macosx
+    if Notifaction::Utils.os == :macosx
       handler = Notifaction::Type::OSX.new
     else
       handler = Notifaction::Type::Linux.new
@@ -17,7 +17,7 @@ class Notify
   # Display a modal popup with a close button
   # @since 0.1.0
   def self.modal(message, title)
-    if Utils.os == :macosx
+    if Notifaction::Utils.os == :macosx
       handler = Notifaction::Type::OSX.new
     else
       handler = Notifaction::Type::Linux.new
